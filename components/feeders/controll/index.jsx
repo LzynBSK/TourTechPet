@@ -84,7 +84,7 @@
 // ComedouroControl.js
 
 import React, { useState } from 'react';
-import { View, Text, Button, Modal, StyleSheet } from 'react-native';
+import { View, Text, Button, Modal, StyleSheet, SafeAreaView } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 const Controll = () => {
@@ -99,13 +99,14 @@ const Controll = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
+      <SafeAreaView style={styles.container_safe}>
       <Text>Comedouro {comedouro.id}</Text>
       <Text>Status: {comedouro.status}</Text>
       <Text>Pote de ração: {comedouro.poteRacao}</Text>
       <Text>Bateria: {comedouro.batery}</Text>
       <Button title="Alimentar" onPress={() => setModalVisible(true)} />
-
+      </SafeAreaView>
       <Modal
         animationType="slide"
         transparent={true}
@@ -142,6 +143,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
+  container:{
+    flex: 1,
+  },
+  container_safe:{
+    justifyContent: "center"
+  }
 });
 
 export default Controll;
